@@ -5,12 +5,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-footer',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <footer class="bg-gray-50 py-4 mt-auto">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <p class="text-gray-600">&copy; 2024 42 Group Task. All rights reserved.</p>
-      </div>
-    </footer>
-  `
+  templateUrl: './footer.component.html'
 })
 export class FooterComponent {}

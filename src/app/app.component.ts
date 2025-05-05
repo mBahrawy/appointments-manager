@@ -11,9 +11,9 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
   template: `
     <div class="flex min-h-screen">
       <app-sidebar class="flex"></app-sidebar>
-      <div class="flex flex-1 flex-col">
+      <div class="flex flex-1 flex-col bg-gray-50">
         <app-header></app-header>
-        <main class="flex flex-1">
+        <main class="flex flex-1 bg-gray-50">
           <router-outlet></router-outlet>
         </main>
         <app-footer></app-footer>

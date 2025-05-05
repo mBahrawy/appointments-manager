@@ -2,7 +2,7 @@ import { MenuItem } from '../interfaces/menu-item.interface';
 
 export const SIDEBAR_MENU: MenuItem[] = [
   {
-    title: 'لوحة التحكم',
+    title: 'الرئيسيه',
     url: '/dashboard',
     iconClass: 'icon-home'
   },
