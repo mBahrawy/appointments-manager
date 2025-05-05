@@ -1,0 +1,27 @@
+<aside class="w-[280px] bg-white border-r border-gray-200 flex flex-col grow">
+  <div class="p-6 flex flex-col grow">
+    <div class="mb-8 pt-5 pe-5">
+      <img src="/assets/images/logo.svg" />
+    </div>
+    <nav class="flex flex-col justify-between grow">
+      <ul class="space-y-1">
+        <li *ngFor="let item of menuItems">
+          <a [routerLink]="item.url"
+             routerLinkActive="bg-gray-100 text-gray-600 font-bold"
+             #rla="routerLinkActive"
+             class="gap-2 flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors relative">
+            <span [class]="item.iconClass"></span>
+            <span>{{ item.title }}</span>
+            <span *ngIf="rla.isActive" class="absolute right-[2px] top-[7px] bottom-0 w-[6px] h-[70%] bg-gray-400 rounded-full"></span>
+          </a>
+        </li>
+      </ul>
+      <div class="">
+        <a class="gap-2 flex items-center px-4 py-3 text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer">
+          <span class="icon-exit"></span>
+          <span>تسجيل الخروج</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</aside>

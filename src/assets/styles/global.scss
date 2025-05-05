@@ -6,10 +6,10 @@ body {
   overflow: hidden;
 }
 
-* {
-  direction: rtl;
-}
-
 app-root {
   @apply flex flex-col;
+}
+
+* {
+  direction: rtl;
 }

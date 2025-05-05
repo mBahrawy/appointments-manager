@@ -7,24 +7,19 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent
-  ],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, SidebarComponent],
   template: `
-    <div class="flex flex-col min-h-screen">
-      <app-header></app-header>
-      <div class="flex flex-1">
-        <app-sidebar></app-sidebar>
-        <main class="flex-1 p-8 bg-gray-50">
+    <div class="flex min-h-screen">
+      <app-sidebar class="flex"></app-sidebar>
+      <div class="flex flex-1 flex-col">
+        <app-header></app-header>
+        <main class="flex flex-1">
           <router-outlet></router-outlet>
         </main>
+        <app-footer></app-footer>
       </div>
-      <app-footer></app-footer>
     </div>
-  `
+  `,
 })
 export class AppComponent {
   title = '42-group-task';
