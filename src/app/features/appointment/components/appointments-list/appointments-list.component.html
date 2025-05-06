@@ -41,6 +41,7 @@
       <app-appointment
         *ngFor="let appointment of appointments"
         [appointment]="appointment"
+        (cancelAppointment)="onCancelAppointment($event)"
         class="h-full">
       </app-appointment>
     </div>

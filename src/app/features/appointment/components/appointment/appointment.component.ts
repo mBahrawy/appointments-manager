@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Appointment } from '../../models/appointment.model';
 
@@ -10,4 +10,11 @@ import { Appointment } from '../../models/appointment.model';
 })
 export class AppointmentComponent {
   @Input() appointment!: Appointment;
+  @Output() cancelAppointment = new EventEmitter<number>();
+
+  onCancelClick() {
+    if (confirm('هل أنت متأكد من إلغاء هذا الموعد؟')) {
+      this.cancelAppointment.emit(this.appointment.id);
+    }
+  }
 }

@@ -77,4 +77,12 @@ export class AppointmentsListComponent {
       this.isPopupOpen = false;
     }
   }
+
+  onCancelAppointment(appointmentId: number) {
+    const appointment = this.appointments.find(a => a.id === appointmentId);
+    if (appointment) {
+      appointment.status = 'ملغي';
+      this.sortAppointments();
+    }
+  }
 }

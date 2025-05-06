@@ -35,10 +35,18 @@
       {{ appointment.status }}
     </span>
 
+
   </div>
 
   <a href="#" class="block text-green-700 font-semibold mt-4 hover:underline">
     تفاصيل الموعد
     <span class="icon-arrow"></span>
   </a>
+  <button
+  *ngIf="appointment.status !== 'ملغي'"
+  (click)="onCancelClick()"
+  class="block text-red-400 font-semibold mt-4 hover:underline"
+>
+  إلغاء الموعد
+</button>
 </div>
