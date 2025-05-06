@@ -1,0 +1,17 @@
+<nav aria-label="breadcrumb" class="flex flex-wrap items-center py-6 px-6 mb-4 bg-white rounded-lg rtl">
+  <ol class="flex flex-wrap items-center">
+    <li *ngFor="let item of breadcrumbItems; let last = last"
+        class="flex items-center  text-[14px]"
+        [class.text-gray-400]="item.isActive">
+      <a *ngIf="!last"
+         [routerLink]="item.path"
+         class=" hover:underline text-gray-600">
+        {{ item.label }}
+      </a>
+      <span *ngIf="last" class="text-gray-400">{{ item.label }}</span>
+      <span *ngIf="!last" class="mx-2 text-gray-400">
+        <span class="icon-dpwn-1 rtl:rotate-90  ltr:-rotate-90 text-[6px] block"></span>
+      </span>
+    </li>
+  </ol>
+</nav>
