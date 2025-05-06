@@ -4,3 +4,4 @@
 @use './assets/styles/global';
 @use './assets/font-icon/style.css';
 
+@custom-variant dark (&:where(.dark, .dark *));

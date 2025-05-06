@@ -1,5 +1,17 @@
-<header class="p-4  shadow-md">
-  <div class="flex flex-col">
-    <app-breadcrumb></app-breadcrumb>
+<header class="p-4">
+  <div>
+    <div
+      class="flex-wrap items-center py-6 px-6 mb-4 bg-white dark:bg-slate-900 rounded-lg w-full flex justify-between"
+    >
+      <app-breadcrumb></app-breadcrumb>
+      <button (click)="toggleMode()" class="cursor-pointer text-xl">
+        <span *ngIf="!darkMode()">
+          <span class="icon-moon"></span>
+        </span>
+        <span *ngIf="darkMode()">
+          <span class="icon-sun dark:text-white"></span>
+        </span>
+      </button>
+    </div>
   </div>
 </header>

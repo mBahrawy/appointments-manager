@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
+<div class="p-4 sm:p-6 lg:p-8">
   <div class="max-w-7xl mx-auto">
     <!-- Sort Controls -->
     <div class="mb-6 flex justify-end items-center space-x-4">
@@ -7,7 +7,7 @@
         <button
           (click)="togglePopup()"
           class="sort-icon inline-flex items-center p-2 text-gray-600 hover:text-gray-900 focus:outline-none cursor-pointer">
-          <span>
+          <span class="dark:text-white">
             ترتيب حسب
            </span>
         </button>
@@ -15,13 +15,13 @@
         <!-- Popup Menu -->
 
         <div *ngIf="isPopupOpen"
-             class="sort-popup absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10"
+             class="sort-popup absolute mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-slate-700 ring-1 ring-black ring-opacity-5 z-10"
              [ngClass]="{'right-[-50px]': document.dir === 'rtl', 'left-[-50px]': document.dir === 'ltr'}">
           <div class="py-1" role="menu" aria-orientation="vertical">
             <button *ngFor="let option of sortOptions"
                     (click)="sortField = option.value; onSortChange()"
-                    [class.bg-gray-100]="sortField === option.value"
-                    class="w-full text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                    [ngClass]="{'bg-gray-100 dark:bg-gray-400' : sortField === option.value}"
+                    class="w-full text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:dark:bg-gray-400 focus:outline-none focus:bg-gray-100 dark:text-white"
                     role="menuitem">
               {{option.label}}
             </button>
@@ -32,8 +32,8 @@
       <button
         (click)="toggleSortDirection()"
         class="inline-flex items-center text-sm font-medium text-gray-700 cursor-pointer">
-        <span *ngIf="sortDirection === 'desc'" class="icon-sort-down"></span>
-        <span *ngIf="sortDirection === 'asc'" class="icon-sort-up"></span>
+        <span *ngIf="sortDirection === 'desc'" class="icon-sort-down dark:text-white"></span>
+        <span *ngIf="sortDirection === 'asc'" class="icon-sort-up dark:text-white"></span>
       </button>
     </div>
 

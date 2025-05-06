@@ -1,23 +1,24 @@
-<aside class="w-[280px] bg-white border-r border-gray-200 flex flex-col grow">
+<aside class="w-[320px] bg-white border-r border-gray-200 flex flex-col grow dark:bg-slate-900">
   <div class="p-6 flex flex-col grow">
     <div class="mb-8 pt-5 pe-5">
-      <img src="/assets/images/logo.svg" />
+      <img class="block dark:hidden" src="/assets/images/logo.svg" />
+      <img class="hidden dark:block" src="/assets/images/logo-white.svg" />
     </div>
     <nav class="flex flex-col justify-between grow">
-      <ul class="space-y-1">
+      <ul class="space-y-1  dark:bg-black p-5 rounded-xl">
         <li *ngFor="let item of menuItems">
           <a [routerLink]="item.url"
-             routerLinkActive="bg-gray-100 text-gray-600 font-bold"
+             routerLinkActive="bg-gray-100 dark:bg-gray-700 text-gray-600 font-bold"
              #rla="routerLinkActive"
-             class="gap-2 flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors relative">
+             class="gap-2 flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-400 transition-colors relative  dark:text-white">
             <span [class]="item.iconClass"></span>
             <span>{{ item.title }}</span>
-            <span *ngIf="rla.isActive" class="absolute right-[2px] top-[7px] bottom-0 w-[6px] h-[70%] bg-gray-400 rounded-full"></span>
+            <span *ngIf="rla.isActive" class="absolute right-[2px] top-[7px] bottom-0 w-[6px] h-[70%] bg-gray-400 dark:bg-gray-400 rounded-full"></span>
           </a>
         </li>
       </ul>
       <div class="">
-        <a class="gap-2 flex items-center px-4 py-3 text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer">
+        <a class="gap-2 flex items-center px-4 py-3 text-red-600 dark:text-red-400 hover:text-red-600 rounded-lg hover:bg-red-50 dark:hover:bg-gray-400 transition-colors cursor-pointer">
           <span class="icon-exit"></span>
           <span>تسجيل الخروج</span>
         </a>

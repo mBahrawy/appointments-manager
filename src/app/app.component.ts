@@ -11,9 +11,9 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
   template: `
     <div class="flex min-h-screen">
       <app-sidebar class="flex"></app-sidebar>
-      <div class="flex flex-1 flex-col bg-gray-50">
+      <div class="flex flex-1 flex-col bg-gray-50 dark:bg-gray-800">
         <app-header></app-header>
-        <main class="flex flex-1 bg-gray-50">
+        <main class="flex flex-1">
           <router-outlet></router-outlet>
         </main>
         <app-footer></app-footer>
@@ -21,6 +21,4 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
     </div>
   `,
 })
-export class AppComponent {
-  title = '42-group-task';
-}
+export class AppComponent {}
