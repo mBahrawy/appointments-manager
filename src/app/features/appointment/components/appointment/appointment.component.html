@@ -44,7 +44,7 @@
   </a>
   <button
   *ngIf="appointment.status !== appointmentStatus.Cancelled && appointment.status !== appointmentStatus.Completed"
-  (click)="onCancelClick()"
+  (click)="onCancelAppointment()"
   class="block text-red-400 font-semibold mt-4 hover:underline"
 >
   إلغاء الموعد

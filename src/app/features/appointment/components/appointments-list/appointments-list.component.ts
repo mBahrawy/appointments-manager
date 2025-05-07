@@ -1,14 +1,11 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Appointment, AppointmentStatus } from '../../models/appointment.model';
-import { DUMMY_APPOINTMENTS } from '../../constants/dummy-data';
-import { AppointmentComponent } from '../appointment/appointment.component';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import * as AppointmentActions from '../../store/appointment.actions';
-import * as AppointmentSelectors from '../../store/appointment.selectors';
+import { Appointment } from '../../models/appointment.model';
+import { AppointmentService } from '../../services/appointment.service';
+import { AppointmentComponent } from '../appointment/appointment.component';
 
 type SortField = 'date' | 'title' | 'status';
 type SortDirection = 'asc' | 'desc';
@@ -25,7 +22,7 @@ interface SortOption {
   templateUrl: 'appointments-list.component.html',
 })
 export class AppointmentsListComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(private appointmentService: AppointmentService) {}
 
   appointments$: Observable<Appointment[]> = of([]);
   sortDirection: SortDirection = 'desc';
@@ -40,9 +37,7 @@ export class AppointmentsListComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.appointments$ = this.store.select(
-      AppointmentSelectors.selectAllAppointments
-    );
+    this.appointments$ = this.appointmentService.getAllAppointments()
   }
 
   sortAppointments(appointments: Appointment[]) {
@@ -85,18 +80,7 @@ export class AppointmentsListComponent implements OnInit {
     }
   }
 
-  onCancelAppointment(appointmentId: number) {
-    const appointment = DUMMY_APPOINTMENTS.find((a) => a.id === appointmentId);
-    if (appointment) {
-      const updatedAppointment = {
-        ...appointment,
-        status: AppointmentStatus.Cancelled,
-      };
-      this.store.dispatch(
-        AppointmentActions.updateAppointmentSuccess({
-          appointment: updatedAppointment,
-        })
-      );
-    }
+  onCancelAppointment(a: Appointment) {
+    this.appointmentService.cancelAppointment(a)
   }
 }

@@ -14,7 +14,7 @@ export const DUMMY_APPOINTMENTS: Appointment[] = [
     location: 'جامعة أم القرى-العابدية',
     status: AppointmentStatus.Scheduled,
     appointmentType: AppointmentType.CheckUp,
-    details: 'اختبار القدرة المعرفية-التخصصات العلمية',
+    details: `This has script <script> console.log("XXH attack!!) </script>`,
     clientName: 'أحمد محمد',
     clientPhone: '0501234567',
     clientEmail: 'ahmed@example.com',

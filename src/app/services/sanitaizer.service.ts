@@ -6,10 +6,10 @@ import DOMPurify from 'dompurify';
   providedIn: 'root',
 })
 export class SanitizerService {
-  constructor(private sanitizer: DomSanitizer){}
+  constructor(private domSanitizer: DomSanitizer){}
 
   sanitizeHtml(rawHtml: string): SafeHtml{
     const cleanHtml = DOMPurify.sanitize(rawHtml); // Sanitize with DOMPurify
-    return this.sanitizer.bypassSecurityTrustHtml(cleanHtml);
+    return this.domSanitizer.bypassSecurityTrustHtml(cleanHtml);
   }
 }

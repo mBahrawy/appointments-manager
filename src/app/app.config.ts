@@ -6,9 +6,17 @@ import { appointmentReducer } from './features/appointment/store/appointment.red
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
+import { DialogService } from 'primeng/dynamicdialog';
+import { AppointmentService } from './features/appointment/services/appointment.service';
+import { ToasterService } from './services/toaster.service';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    DialogService,
+    AppointmentService,
+    ToasterService,
+    MessageService,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore({
@@ -17,7 +25,10 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
         theme: {
-            preset: Aura
+            preset: Aura,
+            options: {
+              darkModeSelector: ".dark"
+            }
         }
     })
   ]

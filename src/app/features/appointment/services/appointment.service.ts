@@ -1,50 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
-export interface Appointment {
-  id: number;
-  title: string;
-  date: Date;
-  description: string;
-  status: 'scheduled' | 'completed' | 'cancelled';
-}
+import { Appointment, AppointmentStatus } from '../models/appointment.model';
+import * as AppointmentActions from '../store/appointment.actions';
+import * as AppointmentSelectors from '../store/appointment.selectors';
+import { Store } from '@ngrx/store';
+import { ToasterService } from '../../../services/toaster.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppointmentService {
-  private appointments: Appointment[] = [];
+  constructor(private store: Store,
+     private toasterService: ToasterService
+    ) {}
 
-  constructor() {}
-
-  getAppointments(): Observable<Appointment[]> {
-    return of(this.appointments);
+  getAllAppointments() {
+    return this.store.select(
+      AppointmentSelectors.selectAllAppointments
+    );
   }
 
-  addAppointment(appointment: Omit<Appointment, 'id'>): Observable<Appointment> {
-    const newAppointment = {
-      ...appointment,
-      id: this.appointments.length + 1
-    };
-    this.appointments.push(newAppointment);
-    return of(newAppointment);
-  }
+  cancelAppointment(appointment: Appointment) {
+    if (appointment) {
+      const updatedAppointment = {
+        ...appointment,
+        status: AppointmentStatus.Cancelled,
+      };
+      this.store.dispatch(
+        AppointmentActions.updateAppointmentSuccess({
+          appointment: {
+            ...updatedAppointment,
+          },
+        })
+      );
 
-  updateAppointment(id: number, appointment: Partial<Appointment>): Observable<Appointment | undefined> {
-    const index = this.appointments.findIndex(a => a.id === id);
-    if (index !== -1) {
-      this.appointments[index] = { ...this.appointments[index], ...appointment };
-      return of(this.appointments[index]);
+      this.toasterService.showMessage({
+        severity: 'success',
+        summary: 'تم',
+        detail: 'تم الغاء الميعاد بنجاح'
+      })
+
+
     }
-    return of(undefined);
-  }
-
-  deleteAppointment(id: number): Observable<boolean> {
-    const index = this.appointments.findIndex(a => a.id === id);
-    if (index !== -1) {
-      this.appointments.splice(index, 1);
-      return of(true);
-    }
-    return of(false);
   }
 }

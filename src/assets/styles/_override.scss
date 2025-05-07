@@ -1,10 +1,20 @@
 // Overriding primeng text editor
-body{
-  --p-editor-toolbar-background: var(--color-gray-700);
+body {
+  --p-dialog-footer-padding: 0px;
+  --p-dialog-header-padding: 0px;
+
+  &.dark {
+    -p-editor-toolbar-background: var(--color-gray-700);
   --p-editor-content-background: var(--color-gray-700);
   --p-editor-toolbar-border-color: var(--color-gray-500);
   --p-editor-overlay-border-color: var(--color-gray-500);
   --p-editor-content-border-color: var(--color-gray-500);
+  --p-editor-toolbar-item-hover-color: var(--color-gray-100);
+  --p-editor-content-color: var(--color-gray-200);
+
+  --p-dialog-background:var(--color-gray-600);
+  --p-dialog-border-color: var(--color-gray-800);
+  }
 
   &:not(.dark) {
     --p-editor-toolbar-background: var(--color-white);

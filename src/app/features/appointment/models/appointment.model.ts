@@ -17,15 +17,16 @@ export interface Appointment {
     id?: number;
     appointmentType?: AppointmentType;
     title: string;
-    date: string;
     status: AppointmentStatus;
-    startTime: string;
-    endTime: string;
-    location: string;
-    details: string | SafeHtml;
-    clientName: string;
-    clientPhone: string;
-    clientEmail: string;
+    date: string;
+    startTime?: string;
+    endTime?: string;
+    location?: string;
+    details: string;
+    safeHTMLDetails?: SafeHtml;
+    clientName?: string;
+    clientPhone?: string;
+    clientEmail?: string;
 }
 
 export interface AppointmentState {
