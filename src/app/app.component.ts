@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
+import { DUMMY_APPOINTMENTS } from './features/appointment/constants/dummy-data';
+import * as AppointmentActions from './features/appointment/store/appointment.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -21,4 +24,15 @@ import { SidebarComponent } from './core/components/sidebar/sidebar.component';
     </div>
   `,
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    // Load dummy data into store
+    this.store.dispatch(
+      AppointmentActions.loadAppointmentsSuccess({
+        appointments: DUMMY_APPOINTMENTS,
+      })
+    );
+  }
+}

@@ -1,0 +1,27 @@
+// Overriding primeng text editor
+body{
+  --p-editor-toolbar-background: var(--color-gray-700);
+  --p-editor-content-background: var(--color-gray-700);
+  --p-editor-toolbar-border-color: var(--color-gray-500);
+  --p-editor-overlay-border-color: var(--color-gray-500);
+  --p-editor-content-border-color: var(--color-gray-500);
+
+  &:not(.dark) {
+    --p-editor-toolbar-background: var(--color-white);
+    --p-editor-toolbar-border-color: #d1d5db;
+    --p-editor-toolbar-item-color: #4b5563;
+    --p-editor-toolbar-item-hover-color: #1a1a1a;
+    --p-editor-toolbar-item-active-color: #2563eb;
+    --p-editor-overlay-background: rgba(255, 255, 255, 0.9);
+    --p-editor-overlay-border-color: #d1d5db;
+    --p-editor-overlay-color: #1a1a1a;
+    --p-editor-overlay-shadow: rgba(0, 0, 0, 0.1);
+    --p-editor-overlay-option-focus-background: #e5e7eb;
+    --p-editor-overlay-option-color: #1a1a1a;
+    --p-editor-overlay-option-focus-color: #1a1a1a;
+    --p-editor-content-background: var(--color-white);
+    --p-editor-content-border-color: #d1d5db;
+    --p-editor-content-color: #1a1a1a;
+  }
+
+}

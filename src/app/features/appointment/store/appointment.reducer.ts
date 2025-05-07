@@ -32,6 +32,23 @@ export const appointmentReducer = createReducer(
     loading: false
   })),
 
+  // Get Appointment By Id
+  on(AppointmentActions.getAppointmentById, (state) => ({
+    ...state,
+    loading: true,
+    error: null
+  })),
+  on(AppointmentActions.getAppointmentByIdSuccess, (state, { appointment }) => ({
+    ...state,
+    selectedAppointment: appointment,
+    loading: false
+  })),
+  on(AppointmentActions.getAppointmentByIdFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loading: false
+  })),
+
   // Create Appointment
   on(AppointmentActions.createAppointment, (state) => ({
     ...state,

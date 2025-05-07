@@ -84,7 +84,7 @@ export const DUMMY_APPOINTMENTS: Appointment[] = [
     location: 'مركز الصحة النفسية',
     status: AppointmentStatus.Scheduled,
     appointmentType: AppointmentType.Consultation,
-    details: 'اختبار القدرة المعرفية-التخصصات العلمية',
+    details: '<ul><li><b><h1>html</h1></b></li></ul>',
     clientName: 'عبدالرحمن سعيد',
     clientPhone: '0598765432',
     clientEmail: 'abdulrahman@example.com',

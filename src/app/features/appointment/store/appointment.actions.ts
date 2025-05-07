@@ -12,6 +12,19 @@ export const loadAppointmentsFailure = createAction(
   props<{ error: string }>()
 );
 
+export const getAppointmentById = createAction(
+  '[Appointment] Get Appointment By Id',
+  props<{ id: number }>()
+);
+export const getAppointmentByIdSuccess = createAction(
+  '[Appointment] Get Appointment By Id Success',
+  props<{ appointment: Appointment }>()
+);
+export const getAppointmentByIdFailure = createAction(
+  '[Appointment] Get Appointment By Id Failure',
+  props<{ error: string }>()
+);
+
 export const createAppointment = createAction(
   '[Appointment] Create Appointment',
   props<{ appointment: Appointment }>()

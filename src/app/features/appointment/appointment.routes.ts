@@ -8,5 +8,9 @@ export const APPOINTMENT_ROUTES: Routes = [
   {
     path: 'create',
     loadComponent: () => import('./components/create-appointment/create-appointment.component').then(m => m.CreateAppointmentComponent)
+  },
+  {
+    path: ':id',
+    loadComponent: () => import('./components/appointment-detail/appointment-detail.component').then(m => m.AppointmentDetailComponent)
   }
 ];

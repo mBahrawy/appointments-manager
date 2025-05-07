@@ -6,7 +6,7 @@ import { AppointmentComponent } from '../appointment/appointment.component';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import * as AppointmentActions from '../../store/appointment.actions';
 import * as AppointmentSelectors from '../../store/appointment.selectors';
 
@@ -24,16 +24,10 @@ interface SortOption {
   imports: [CommonModule, AppointmentComponent, FormsModule, RouterLink],
   templateUrl: 'appointments-list.component.html',
 })
-export class AppointmentsListComponent implements OnInit, OnDestroy {
-  constructor(private store: Store) {
-    this.appointments$ = this.store.select(
-      AppointmentSelectors.selectAllAppointments
-    );
-  }
+export class AppointmentsListComponent implements OnInit {
+  constructor(private store: Store) {}
 
-
-  appointments$: Observable<Appointment[]>;
-  private _subscription = new Subscription();
+  appointments$: Observable<Appointment[]> = of([]);
   sortDirection: SortDirection = 'desc';
   sortField: SortField = 'date';
   isPopupOpen = false;
@@ -46,20 +40,9 @@ export class AppointmentsListComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit() {
-    // Load dummy data into store
-    this._subscription.add(
-      this.appointments$.subscribe((appointments) => {
-        (!appointments || !appointments.length) &&
-          this.store.dispatch(
-            AppointmentActions.loadAppointmentsSuccess({
-              appointments: DUMMY_APPOINTMENTS,
-            })
-          );
-      })
-    )
-  }
-  ngOnDestroy(): void {
-    this._subscription.unsubscribe();
+    this.appointments$ = this.store.select(
+      AppointmentSelectors.selectAllAppointments
+    );
   }
 
   sortAppointments(appointments: Appointment[]) {

@@ -2,6 +2,7 @@
 
 @use './assets/styles/font';
 @use './assets/styles/global';
+@use './assets/styles/override';
 @use './assets/font-icon/style.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
