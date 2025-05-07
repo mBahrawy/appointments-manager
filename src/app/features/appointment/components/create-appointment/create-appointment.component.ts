@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Appointment, AppointmentStatus, AppointmentType } from '../../models/appointment.model';
+import * as AppointmentActions from '../../store/appointment.actions';
 
 @Component({
   selector: 'app-create-appointment',
@@ -17,6 +19,7 @@ export class CreateAppointmentComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private store: Store
   ) {
     this.appointmentForm = this.fb.group({
       clientName: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,7 +32,7 @@ export class CreateAppointmentComponent {
   onSubmit() {
     if (this.appointmentForm.valid) {
       const appointment: Appointment = {
-        id: Math.random()*1000,
+        id: Math.floor(Math.random() * 1000),
         title: this.appointmentForm.value.clientName,
         date: new Date().toISOString(),
         details: this.appointmentForm.value.requestDetails,
@@ -43,8 +46,8 @@ export class CreateAppointmentComponent {
         appointmentType: AppointmentType.Consultation
       };
 
-      console.log(appointment);
-      // this.store.dispatch(AppointmentActions.createAppointment({ appointment }));
+      // Dispatch create appointment action
+      this.store.dispatch(AppointmentActions.createAppointmentSuccess({ appointment }));
       this.router.navigate(['/appointments']);
     }
   }

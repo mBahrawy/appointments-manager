@@ -43,7 +43,7 @@
     <span class="icon-arrow"></span>
   </a>
   <button
-  *ngIf="appointment.status !== appointmentStatus.Cancelled"
+  *ngIf="appointment.status !== appointmentStatus.Cancelled && appointment.status !== appointmentStatus.Completed"
   (click)="onCancelClick()"
   class="block text-red-400 font-semibold mt-4 hover:underline"
 >

@@ -1,10 +1,14 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Appointment, AppointmentStatus } from '../../models/appointment.model';
 import { DUMMY_APPOINTMENTS } from '../../constants/dummy-data';
 import { AppointmentComponent } from '../appointment/appointment.component';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+import * as AppointmentActions from '../../store/appointment.actions';
+import * as AppointmentSelectors from '../../store/appointment.selectors';
 
 type SortField = 'date' | 'title' | 'status';
 type SortDirection = 'asc' | 'desc';
@@ -18,10 +22,18 @@ interface SortOption {
   selector: 'app-appointments-list',
   standalone: true,
   imports: [CommonModule, AppointmentComponent, FormsModule, RouterLink],
-  templateUrl: 'appointments-list.component.html'
+  templateUrl: 'appointments-list.component.html',
 })
-export class AppointmentsListComponent {
-  appointments: Appointment[] = DUMMY_APPOINTMENTS;
+export class AppointmentsListComponent implements OnInit, OnDestroy {
+  constructor(private store: Store) {
+    this.appointments$ = this.store.select(
+      AppointmentSelectors.selectAllAppointments
+    );
+  }
+
+
+  appointments$: Observable<Appointment[]>;
+  private _subscription = new Subscription();
   sortDirection: SortDirection = 'desc';
   sortField: SortField = 'date';
   isPopupOpen = false;
@@ -30,15 +42,28 @@ export class AppointmentsListComponent {
   sortOptions: SortOption[] = [
     { value: 'date', label: 'التاريخ' },
     { value: 'title', label: 'الاسم' },
-    { value: 'status', label: 'الحاله' }
+    { value: 'status', label: 'الحاله' },
   ];
 
-  constructor() {
-    this.sortAppointments();
+  ngOnInit() {
+    // Load dummy data into store
+    this._subscription.add(
+      this.appointments$.subscribe((appointments) => {
+        (!appointments || !appointments.length) &&
+          this.store.dispatch(
+            AppointmentActions.loadAppointmentsSuccess({
+              appointments: DUMMY_APPOINTMENTS,
+            })
+          );
+      })
+    )
+  }
+  ngOnDestroy(): void {
+    this._subscription.unsubscribe();
   }
 
-  sortAppointments() {
-    this.appointments = [...this.appointments].sort((a, b) => {
+  sortAppointments(appointments: Appointment[]) {
+    return [...appointments].sort((a, b) => {
       let comparison = 0;
 
       switch (this.sortField) {
@@ -58,13 +83,11 @@ export class AppointmentsListComponent {
   }
 
   onSortChange() {
-    this.sortAppointments();
     this.isPopupOpen = false;
   }
 
   toggleSortDirection() {
     this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-    this.sortAppointments();
   }
 
   togglePopup() {
@@ -80,10 +103,17 @@ export class AppointmentsListComponent {
   }
 
   onCancelAppointment(appointmentId: number) {
-    const appointment = this.appointments.find(a => a.id === appointmentId);
+    const appointment = DUMMY_APPOINTMENTS.find((a) => a.id === appointmentId);
     if (appointment) {
-      appointment.status = AppointmentStatus.Cancelled;
-      this.sortAppointments();
+      const updatedAppointment = {
+        ...appointment,
+        status: AppointmentStatus.Cancelled,
+      };
+      this.store.dispatch(
+        AppointmentActions.updateAppointmentSuccess({
+          appointment: updatedAppointment,
+        })
+      );
     }
   }
 }
