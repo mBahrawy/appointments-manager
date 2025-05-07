@@ -3,7 +3,7 @@ import { Appointment, AppointmentStatus } from '../models/appointment.model';
 import * as AppointmentActions from '../store/appointment.actions';
 import * as AppointmentSelectors from '../store/appointment.selectors';
 import { Store } from '@ngrx/store';
-import { ToasterService } from '../../../services/toaster.service';
+import { ToasterService } from '../../../core/services/toaster.service';
 
 @Injectable({
   providedIn: 'root',

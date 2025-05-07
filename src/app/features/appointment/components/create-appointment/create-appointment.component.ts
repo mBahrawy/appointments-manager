@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Appointment, AppointmentStatus, AppointmentType } from '../../models/appointment.model';
 import * as AppointmentActions from '../../store/appointment.actions';
 import { Editor } from 'primeng/editor';
-import { SanitizerService } from '../../../../services/sanitaizer.service';
+import { SanitizerService } from '../../../../core/services/sanitaizer.service';
 @Component({
   selector: 'app-create-appointment',
   standalone: true,
@@ -49,9 +49,6 @@ export class CreateAppointmentComponent {
         appointmentType: AppointmentType.Consultation
       };
 
-      console.log(appointment)
-
-      // Dispatch create appointment action
       this.store.dispatch(AppointmentActions.createAppointmentSuccess({ appointment }));
       this.router.navigate(['/appointments']);
     }

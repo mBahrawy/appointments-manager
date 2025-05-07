@@ -17,8 +17,6 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
-    "@ng-icons/core": "^31.3.0",
-    "@ng-icons/iconsax": "^31.3.0",
     "@ngrx/store": "^19.1.0",
     "@primeng/themes": "^19.1.2",
     "@tailwindcss/postcss": "^4.1.5",

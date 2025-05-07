@@ -9,7 +9,7 @@ export class SanitizerService {
   constructor(private domSanitizer: DomSanitizer){}
 
   sanitizeHtml(rawHtml: string): SafeHtml{
-    const cleanHtml = DOMPurify.sanitize(rawHtml); // Sanitize with DOMPurify
+    const cleanHtml = DOMPurify.sanitize(rawHtml);
     return this.domSanitizer.bypassSecurityTrustHtml(cleanHtml);
   }
 }

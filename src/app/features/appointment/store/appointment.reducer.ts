@@ -9,9 +9,6 @@ export const initialState: AppointmentState = {
   error: null
 };
 
-// TODO : Needed to refactored
-
-
 export const appointmentReducer = createReducer(
   initialState,
 
@@ -83,20 +80,4 @@ export const appointmentReducer = createReducer(
     loading: false
   })),
 
-  // Delete Appointment
-  on(AppointmentActions.deleteAppointment, (state) => ({
-    ...state,
-    loading: true,
-    error: null
-  })),
-  on(AppointmentActions.deleteAppointmentSuccess, (state, { id }) => ({
-    ...state,
-    appointments: state.appointments.filter(a => a.id !== id),
-    loading: false
-  })),
-  on(AppointmentActions.deleteAppointmentFailure, (state, { error }) => ({
-    ...state,
-    error,
-    loading: false
-  }))
 );

@@ -1,59 +1,129 @@
-# 42GroupTask
+# 42 Group Task - Appointment Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+A modern, feature-rich appointment management system built with Angular and PrimeNG, featuring a beautiful UI and robust functionality.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+- Appointment scheduling and management
+- Multiple appointment types (CheckUp, Consultation, FollowUp, Emergency)
+- Real-time status tracking
+- Client information management
+- Responsive design with RTL support
+- Rich text editing capabilities
+- Secure content sanitization
 
-```bash
-ng serve
+## 🛠️ Technology Stack
+
+### Core Technologies
+- Angular 19.2.0
+- TypeScript 5.7.2
+- RxJS 7.8.0
+- NgRx 19.1.0 (State Management)
+
+### UI Components & Styling
+- PrimeNG 19.1.2
+- TailwindCSS 4.1.5
+- TailwindCSS RTL 0.9.0
+- Icomoon (font icon generator) Icons
+- Quill Rich Text Editor
+
+### Security
+- DOMPurify for XSS protection
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── features/
+│   │   └── appointment/
+│   │       ├── components/
+│   │       ├── constants/
+│   │       ├── models/
+│   │       └── services/
+│   ├── shared/
+│   └── core/
+├── assets/
+├── environments/
+└── styles.scss
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🚀 Getting Started
 
-## Code scaffolding
+### Prerequisites
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js (Latest LTS version recommended)
+- npm (comes with Node.js)
 
+### Installation
+
+1. Clone the repository:
 ```bash
-ng generate component component-name
+git clone [repository-url]
+cd 42-group-task
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+2. Install dependencies:
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
-
+3. Start the development server:
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The application will be available at `http://localhost:4200/`
 
-## Running unit tests
+### Build
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+To build the project for production:
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
+The build artifacts will be stored in the `dist/` directory.
 
-For end-to-end (e2e) testing, run:
+## 🧪 Testing
 
+Run the unit tests:
 ```bash
-ng e2e
+npm test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🔧 Configuration
 
-## Additional Resources
+The project uses several configuration files:
+- `angular.json` - Angular workspace configuration
+- `tailwind.config.js` - TailwindCSS configuration
+- `tsconfig.json` - TypeScript configuration
+- `.editorconfig` - Editor configuration
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📝 Code Style
+
+The project follows Angular's style guide and uses:
+- TypeScript strict mode
+- ESLint for code linting
+- Prettier for code formatting
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👥 Authors
+
+- Mohamed A. Bahrawy - Initial work
+
+## 🙏 Acknowledgments
+
+- Angular Team
+- PrimeNG Team
+- TailwindCSS Team

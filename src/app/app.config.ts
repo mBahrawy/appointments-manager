@@ -8,7 +8,7 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AppointmentService } from './features/appointment/services/appointment.service';
-import { ToasterService } from './services/toaster.service';
+import { ToasterService } from './core/services/toaster.service';
 import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {

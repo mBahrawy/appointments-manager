@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { Appointment } from '../models/appointment.model';
-// TODO : Needed to refactored
 
 export const loadAppointments = createAction('[Appointment] Load Appointments');
 export const loadAppointmentsSuccess = createAction(
@@ -48,18 +47,5 @@ export const updateAppointmentSuccess = createAction(
 );
 export const updateAppointmentFailure = createAction(
   '[Appointment] Update Appointment Failure',
-  props<{ error: string }>()
-);
-
-export const deleteAppointment = createAction(
-  '[Appointment] Delete Appointment',
-  props<{ id: number }>()
-);
-export const deleteAppointmentSuccess = createAction(
-  '[Appointment] Delete Appointment Success',
-  props<{ id: number }>()
-);
-export const deleteAppointmentFailure = createAction(
-  '[Appointment] Delete Appointment Failure',
   props<{ error: string }>()
 );

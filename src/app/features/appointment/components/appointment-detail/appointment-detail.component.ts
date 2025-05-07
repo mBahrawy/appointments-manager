@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable, map, of, switchMap } from 'rxjs';
 import { Appointment, AppointmentStatus } from '../../models/appointment.model';
 import * as AppointmentSelectors from '../../store/appointment.selectors';
-import { SanitizerService } from '../../../../services/sanitaizer.service';
+import { SanitizerService } from '../../../../core/services/sanitaizer.service';
 import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
 import { ConfirmationDialogComponent } from '../../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 import { AppointmentService } from '../../services/appointment.service';
@@ -35,7 +35,6 @@ export class AppointmentDetailComponent implements OnInit {
   ngOnInit(): void {
     this.error$ = this.store.select(AppointmentSelectors.selectAppointmentError);
 
-    // Get appointment by ID from the store
     this.appointment$ = this.route.paramMap.pipe(
       map(params => params.get('id')),
       switchMap(id => {
