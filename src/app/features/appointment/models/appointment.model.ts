@@ -1,3 +1,5 @@
+import { SafeHtml } from "@angular/platform-browser";
+
 export enum AppointmentType {
   Consultation = 'Consultation',
   FollowUp = 'Follow-up',
@@ -20,7 +22,7 @@ export interface Appointment {
     startTime: string;
     endTime: string;
     location: string;
-    details: string;
+    details: string | SafeHtml;
     clientName: string;
     clientPhone: string;
     clientEmail: string;
