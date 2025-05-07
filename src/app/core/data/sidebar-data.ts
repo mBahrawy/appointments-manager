@@ -8,12 +8,12 @@ export const SIDEBAR_MENU: MenuItem[] = [
   },
   {
     title: 'الخدمات',
-    url: '/appointments',
+    url: '/services',
     iconClass: 'icon-dashboard'
   },
   {
     title: 'مواعيدي',
-    url: '/patients',
+    url: '/appointments',
     iconClass: 'icon-clock-2'
   },
   {

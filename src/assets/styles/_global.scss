@@ -7,7 +7,11 @@ body {
 
 app-root {
   @apply flex flex-col;
+  router-outlet + *{
+    @apply w-full;
+  }
 }
+
 
 * {
   direction: rtl;

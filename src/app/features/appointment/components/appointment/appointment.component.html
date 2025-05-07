@@ -25,10 +25,10 @@
     <span
       [ngClass]="{
         'bg-green-50 text-green-800 border-green-500 ':
-          appointment.status === 'مؤكد',
+          appointment.status === appointmentStatus.Completed,
         'bg-yellow-50 text-yellow-800 border-yellow-500':
-          appointment.status === 'قيد الانتظار',
-        'bg-red-50 text-red-800 border-red-500': appointment.status === 'ملغي'
+          appointment.status === appointmentStatus.Scheduled,
+        'bg-red-50 text-red-800 border-red-500': appointment.status === appointmentStatus.Cancelled
       }"
       class="px-3 py-1 rounded text-xs font-medium border-2"
     >
@@ -43,7 +43,7 @@
     <span class="icon-arrow"></span>
   </a>
   <button
-  *ngIf="appointment.status !== 'ملغي'"
+  *ngIf="appointment.status !== appointmentStatus.Cancelled"
   (click)="onCancelClick()"
   class="block text-red-400 font-semibold mt-4 hover:underline"
 >

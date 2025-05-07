@@ -1,10 +1,34 @@
+export enum AppointmentType {
+  Consultation = 'Consultation',
+  FollowUp = 'Follow-up',
+  CheckUp = 'Check-up',
+  Emergency = 'Emergency'
+}
+
+export enum AppointmentStatus {
+  Scheduled = 'scheduled',
+  Completed = 'completed',
+  Cancelled = 'cancelled'
+}
+
 export interface Appointment {
-    id: number;
+    id?: number;
+    appointmentType?: AppointmentType;
     title: string;
     date: string;
-    appointmentType?: 'Consultation' | 'Follow-up' | 'Check-up' | 'Emergency';
-    status: 'مؤكد' | 'قيد الانتظار' | 'ملغي';
+    status: AppointmentStatus;
     startTime: string;
     endTime: string;
     location: string;
+    details: string;
+    clientName: string;
+    clientPhone: string;
+    clientEmail: string;
+}
+
+export interface AppointmentState {
+    appointments: Appointment[];
+    selectedAppointment: Appointment | null;
+    loading: boolean;
+    error: string | null;
 }

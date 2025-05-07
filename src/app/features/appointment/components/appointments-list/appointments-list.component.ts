@@ -1,9 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Appointment } from '../../models/appointment.model';
+import { Appointment, AppointmentStatus } from '../../models/appointment.model';
 import { DUMMY_APPOINTMENTS } from '../../constants/dummy-data';
 import { AppointmentComponent } from '../appointment/appointment.component';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 type SortField = 'date' | 'title' | 'status';
 type SortDirection = 'asc' | 'desc';
@@ -16,7 +17,7 @@ interface SortOption {
 @Component({
   selector: 'app-appointments-list',
   standalone: true,
-  imports: [CommonModule, AppointmentComponent, FormsModule],
+  imports: [CommonModule, AppointmentComponent, FormsModule, RouterLink],
   templateUrl: 'appointments-list.component.html'
 })
 export class AppointmentsListComponent {
@@ -81,7 +82,7 @@ export class AppointmentsListComponent {
   onCancelAppointment(appointmentId: number) {
     const appointment = this.appointments.find(a => a.id === appointmentId);
     if (appointment) {
-      appointment.status = 'ملغي';
+      appointment.status = AppointmentStatus.Cancelled;
       this.sortAppointments();
     }
   }
