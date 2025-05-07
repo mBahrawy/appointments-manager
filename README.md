@@ -121,9 +121,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 👥 Authors
 
 - Mohamed A. Bahrawy - Initial work
-
-## 🙏 Acknowledgments
-
-- Angular Team
-- PrimeNG Team
-- TailwindCSS Team
